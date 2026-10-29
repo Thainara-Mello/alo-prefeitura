@@ -1,6 +1,6 @@
 # Alô Prefeitura ("Nossa cidade sempre melhor") 🏛️
 
-Aplicação web dinâmica e responsiva de zeladoria urbana e atendimento ao cidadão, desenvolvida para registro, consulta e gerenciamento de ocorrências municipais utilizando **React 19**, **Vite**, **React Router DOM 7**, **HTML5 semântico** e **CSS3 responsivo**.
+Aplicação web dinâmica e responsiva de zeladoria urbana e atendimento ao cidadão, desenvolvida para registro, consulta e gerenciamento de ocorrências municipais utilizando **React 19**, **Vite**, **React Router DOM 7**, **HTML5 semântico**, **CSS3 responsivo** e modelagem de banco de dados relacional em **SQL (PostgreSQL)**.
 
 ---
 
@@ -29,14 +29,19 @@ O **Alô Prefeitura** conecta os moradores do município à equipe administrativ
 - **React Router DOM 7** — Roteamento dinâmico e proteção de rotas por perfil (`CIDADAO` e `ADMIN`)
 - **HTML5 Semântico & Acessibilidade** — Uso de `<main>`, `<section>`, `<header>`, `<article>`, `<form>`, rótulos associados e atributos ARIA
 - **CSS3 Responsivo** — Layout adaptativo com *Flexbox*, *CSS Grid* e *Media Queries* para desktops, tablets e celulares
+- **Banco de Dados Relacional (SQL / PostgreSQL)** — Modelagem Entidade-Relacionamento, esquema DDL e scripts DML/DQL na pasta `database/`
 
 ```text
-src/
-├── components/   # Componentes reutilizáveis (PainelInstitucional, CabecalhoAdmin, Badges, RotaProtegida)
-├── contexts/     # Contexto global de autenticação e sessão (AuthContext)
-├── pages/        # Páginas da aplicação (Cidadão e Administrador)
-├── services/     # Integração de dados e persistência em LocalStorage (api.js e mockData.js)
-└── utils/        # Formatação e validação de CPF, telefone, datas e protocolos (formatters.js)
+├── database/                  # Modelagem e scripts SQL do banco de dados
+│   ├── MODELAGEM_BANCO.md     # Diagrama ER, entidades, relacionamentos e restrições
+│   ├── 01_schema.sql          # Script DDL (CREATE TABLE, PK, FK, UNIQUE, CHECK)
+│   └── 02_manipulacao_dados.sql # Script DML/DQL (INSERT, SELECT, UPDATE, DELETE)
+└── src/
+    ├── components/            # Componentes reutilizáveis (PainelInstitucional, CabecalhoAdmin, Badges, RotaProtegida)
+    ├── contexts/              # Contexto global de autenticação e sessão (AuthContext)
+    ├── pages/                 # Páginas da aplicação (Cidadão e Administrador)
+    ├── services/              # Integração de dados e persistência (api.js e mockData.js)
+    └── utils/                 # Formatação e validação de CPF, telefone, datas e protocolos (formatters.js)
 ```
 
 ---
@@ -68,7 +73,7 @@ Após iniciar, acesse no navegador o endereço indicado no terminal (geralmente 
 
 ## 🔑 Credenciais para Testes
 
-O sistema já conta com dados iniciais carregados automaticamente no navegador (`LocalStorage`) para facilitar os testes:
+O sistema já conta com dados iniciais carregados automaticamente para facilitar os testes:
 
 | Perfil | E-mail ou CPF | Senha |
 | :--- | :--- | :--- |
